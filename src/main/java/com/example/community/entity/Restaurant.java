@@ -19,7 +19,6 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "restaurants_seq_generator")
     private Long id;
-
     private String name;
     private String address;
     private String genre;
