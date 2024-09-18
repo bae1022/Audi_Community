@@ -14,6 +14,7 @@ import lombok.*;
         allocationSize = 50 )
 @Table(name = "RESTAURANT")
 public class Restaurant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "restaurants_seq_generator")
@@ -22,8 +23,8 @@ public class Restaurant {
     private String name;
     private String address;
     private String genre;
-    private long loc_x;
-    private long loc_y;
+    private Long loc_x;
+    private Long loc_y;
     private String description;
     private String register;
     private String fst_crt_usid;
