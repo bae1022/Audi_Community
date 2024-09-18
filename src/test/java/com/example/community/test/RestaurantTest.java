@@ -19,7 +19,7 @@ public class RestaurantTest {
     @BeforeEach
     void setUp() {
         Restaurant restaurant = Restaurant.builder()
-                .name("우육면가")
+                .name("우육면가당기당당")
                 .build();
 
         restaurantRepository.save(restaurant);
