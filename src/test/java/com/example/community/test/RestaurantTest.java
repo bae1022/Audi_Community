@@ -20,10 +20,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.sql.Timestamp;
 import java.util.List;
 
+import static org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 //@DataJpaTest
 @AutoConfigureMockMvc
@@ -61,8 +65,34 @@ public class RestaurantTest {
     }
 
     @Test
+    @DisplayName("read restaurants by loc data")
+    void read_restaurants_by_loc() throws Exception {
+        Long locX = Long.valueOf(24);
+        Long locY = Long.valueOf(45);
+
+        mockMvc.perform(get("/audi/list/loc")
+                        .param("loc_x", locX.toString())
+                        .param("loc_y", locY.toString())
+                        .contentType(MediaType.APPLICATION_JSON)
+                       )
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("register restaurant")
     void make_restaurant() throws Exception {
-        RestaurantDto restaurantDto = new RestaurantDto(Long.valueOf(1), "춘리", "광화문 어쩌구", "점심", 24, 55, "새우 꼬챙이로 계산 안 함", "배세현", "LD10543", "오늘", "오늘");
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+        RestaurantDto restaurantDto = RestaurantDto.builder()
+                .name("춘리")
+                .address("광화문 어쩌구")
+                .genre("점심")
+                .locX(Long.valueOf(24))
+                .locY(Long.valueOf(45))
+                .description("새우 10마리 이상 넣어야함")
+                .fst_crt_usid("LD10543")
+                .lt_ch_usid("LD10543")
+                .build();
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/audi/add")
@@ -71,4 +101,18 @@ public class RestaurantTest {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+
+    // restaurant update
+    @Test
+    @DisplayName("update restaurant")
+    void update_restaurant() throws Exception {
+
+    }
+
+    @Test
+    @DisplayName("read a restaurant by id")
+    void findRestaurantById() throws Exception {
+
+    }
+
 }
