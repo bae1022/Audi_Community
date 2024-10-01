@@ -112,7 +112,12 @@ public class RestaurantTest {
     @Test
     @DisplayName("read a restaurant by id")
     void findRestaurantById() throws Exception {
+        int restaurantId = 502;
 
+        mockMvc.perform(get("/audi/{id}", restaurantId)  // ID를 PathVariable로 전달
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())  // 응답 상태가 200 OK 인지 확인
+                .andDo(print());
     }
 
 }

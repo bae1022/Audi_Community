@@ -23,7 +23,7 @@ public class RestaurantController {
 
     // 레스토랑 Id 조회
     @GetMapping("/{id}")
-    public Restaurant getRestaurantById(@PathVariable("restaurant_id")int id) {
+    public Restaurant getRestaurantById(@PathVariable("id")int id) {
         Restaurant result = restaurantService.getRestaurantById(id);
 
         return result;
@@ -48,7 +48,6 @@ public class RestaurantController {
     @PostMapping("/update")
     public void updateRestaurant(@PathVariable("id")int id,
                                  @RequestBody RestaurantDto restaurantDto) {
-
 
     }
 
