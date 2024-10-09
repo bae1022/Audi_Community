@@ -15,11 +15,15 @@ public class MeetingService {
 
     private final MeetingRepository meetingRepository;
 
-    public List<Meeting> findByDateAndRegisterStatus(String crym, String register_status) {
+    public List<Meeting> findByCrymAndRegisterStatus(String crym, String register_status) {
         return meetingRepository.findByCrymAndRegisterStatus(crym, register_status);
     }
 
     public Meeting findByMeetingId(int meetingId) {
         return meetingRepository.findByMeetingId(meetingId);
+    }
+
+    public List<Meeting> findByCrymAndUnitBizCode(String crym, String unit_biz_code){
+        return meetingRepository.findByCrymAndUnitBizCode(crym, unit_biz_code);
     }
 }

@@ -29,7 +29,7 @@ public class MeetingController {
     @GetMapping("/meetings")
     @Operation(summary="캘린더1", description="전체 확정 간담회 리스트 조회")
     public List<Meeting> getConfirmedMeetings(@RequestParam("crym")String crym, @RequestParam String register_status) {
-        List<Meeting> list_meeting = meetingService.findByDateAndRegisterStatus(crym, register_status);
+        List<Meeting> list_meeting = meetingService.findByCrymAndRegisterStatus(crym, register_status);
 
         return list_meeting;
     }
@@ -40,6 +40,14 @@ public class MeetingController {
         Meeting meeting = meetingService.findByMeetingId(meetingId);
 
         return meeting;
+    }
+
+    @GetMapping("/meetings2")
+    @Operation(summary="캘린더2", description="특정 월 특정 업무 간담회 리스트")
+    public List<Meeting> getUnitMeeting(@RequestParam("crym")String crym, @RequestParam("unitBiz")String unitBiz){
+        List<Meeting> meetingList = meetingService.findByCrymAndUnitBizCode(crym, unitBiz);
+
+        return meetingList;
     }
 
 }
