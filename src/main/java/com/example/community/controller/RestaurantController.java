@@ -4,6 +4,7 @@ import com.example.community.dto.RestaurantDto;
 import com.example.community.entity.Restaurant;
 import com.example.community.repository.RestaurantRepository;
 import com.example.community.service.RestaurantService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class RestaurantController {
 
     // 레스토랑 Id 조회
     @GetMapping("/{id}")
+    @Operation(summary="테스트", description="테스트 중입니다.")
     public Restaurant getRestaurantById(@PathVariable("id")int id) {
         Restaurant result = restaurantService.getRestaurantById(id);
 
@@ -46,9 +48,8 @@ public class RestaurantController {
 
     // 레스토랑 수정
     @PostMapping("/update")
-    public void updateRestaurant(@PathVariable("id")int id,
-                                 @RequestBody RestaurantDto restaurantDto) {
-
+    public void updateRestaurant(@RequestBody RestaurantDto restaurantDto) {
+        restaurantService.updateRestaurant(restaurantDto);
     }
 
     // 레스토랑 삭제
