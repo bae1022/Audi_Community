@@ -18,4 +18,8 @@ public class MeetingService {
     public List<Meeting> findByDateAndRegisterStatus(String crym, String register_status) {
         return meetingRepository.findByCrymAndRegisterStatus(crym, register_status);
     }
+
+    public Meeting findByMeetingId(int meetingId) {
+        return meetingRepository.findByMeetingId(meetingId);
+    }
 }

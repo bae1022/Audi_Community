@@ -27,11 +27,19 @@ public class MeetingController {
     }
 
     @GetMapping("/meetings")
-    @Operation(summary="캘린더 1", description="해당 기준년월 간담회 확정 리스트 전달")
+    @Operation(summary="캘린더1", description="전체 확정 간담회 리스트 조회")
     public List<Meeting> getConfirmedMeetings(@RequestParam("crym")String crym, @RequestParam String register_status) {
         List<Meeting> list_meeting = meetingService.findByDateAndRegisterStatus(crym, register_status);
 
         return list_meeting;
+    }
+
+    @GetMapping("/meetings/{meetingId}")
+    @Operation(summary="캘린더1-1", description="특정 간담회 상세 정보 조회")
+    public Meeting getMeetingDetail(@PathVariable("meetingId")int meetingId){
+        Meeting meeting = meetingService.findByMeetingId(meetingId);
+
+        return meeting;
     }
 
 }
