@@ -13,4 +13,5 @@ public interface MeetingRepository extends JpaRepository<Meeting, Long> {
     Meeting findByMeetingId(int meetingId);
 
     List<Meeting> findByCrymAndUnitBizCode(String crym, String unit_biz_code);
+
 }

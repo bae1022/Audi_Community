@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class MeetingDto {
 
@@ -32,9 +33,8 @@ public class MeetingDto {
     private Timestamp lt_ch_dtti;
 
     @Builder
-    MeetingDto (int meetingId
-                , int restaurantId
-                , String crym
+    MeetingDto (
+                 String crym
                 , String unitBizCode
                 , String registerStatus
                 , String stdt
@@ -46,8 +46,6 @@ public class MeetingDto {
                 , Timestamp fst_crt_dtti
                 , String lt_ch_usid
                 , Timestamp lt_ch_dtti){
-        this.meetingId = meetingId;
-        this.restaurantId = restaurantId;
         this.crym = crym;
         this.unitBizCode = unitBizCode;
         this.registerStatus = registerStatus;
