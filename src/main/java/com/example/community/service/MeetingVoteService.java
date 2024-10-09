@@ -16,6 +16,6 @@ public class MeetingVoteService {
     private final MeetingVoteRepository meetingVoteRepository;
 
     public List<MeetingVote> findByMeetingId(int meetingId) {
-        return meetingVoteRepository.findByMeetingId(meetingId);
+        return meetingVoteRepository.findByMeetingVoteId_MeetingId(meetingId);
     }
 }

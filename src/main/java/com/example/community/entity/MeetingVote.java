@@ -13,9 +13,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "MEETING_VOTE")
 public class MeetingVote {
-    private String eno;
-    @Id
-    private int meetingId;
+    @EmbeddedId
+    private MeetingVoteId meetingVoteId;
     private String ename;
     private Timestamp fst_crt_dtti;
 }

@@ -1,5 +1,7 @@
 package com.example.community.controller;
 
+import com.example.community.dto.MeetingDto;
+import com.example.community.dto.RestaurantDto;
 import com.example.community.entity.Meeting;
 import com.example.community.entity.Restaurant;
 import com.example.community.repository.MeetingRepository;
@@ -49,5 +51,10 @@ public class MeetingController {
 
         return meetingList;
     }
+
+//    @PostMapping("/meetings")
+//    public void save(@RequestBody MeetingDto meetingDto){
+//        Meeting meeting = meetingService
+//    }
 
 }

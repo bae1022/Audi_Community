@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface MeetingVoteRepository extends JpaRepository<MeetingVote, Long> {
 
-    List<MeetingVote> findByMeetingId(int meetingId);
+    List<MeetingVote> findByMeetingVoteId_MeetingId(int meetingId);
 }
