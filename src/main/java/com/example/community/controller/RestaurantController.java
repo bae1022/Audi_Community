@@ -24,8 +24,8 @@ public class RestaurantController {
 
     // 레스토랑 Id 조회
     @GetMapping("/{id}")
-    @Operation(summary="테스트", description="테스트 중입니다.")
-    public Restaurant getRestaurantById(@PathVariable("id")int id) {
+    @Operation(summary = "테스트", description = "테스트 중입니다.")
+    public Restaurant getRestaurantById(@PathVariable("id") int id) {
         Restaurant result = restaurantService.getRestaurantById(id);
 
         return result;
