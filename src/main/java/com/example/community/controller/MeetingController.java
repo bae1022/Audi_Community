@@ -52,9 +52,12 @@ public class MeetingController {
         return meetingList;
     }
 
-//    @PostMapping("/meetings")
-//    public void save(@RequestBody MeetingDto meetingDto){
-//        Meeting meeting = meetingService
-//    }
+    @PostMapping("/meetings")
+    @Operation(summary="캘린더4", description="간담회 후보 등록")
+    public Meeting save(@RequestBody MeetingDto meetingDto){
+        Meeting meeting = meetingService.saveMeeting(meetingDto);
+
+        return meeting;
+    }
 
 }

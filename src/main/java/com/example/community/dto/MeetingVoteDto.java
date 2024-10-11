@@ -1,12 +1,19 @@
 package com.example.community.dto;
 
 import com.example.community.entity.Meeting;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
-
+@Getter
+@NoArgsConstructor
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MeetingVoteDto {
 
     private String eno;

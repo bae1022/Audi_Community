@@ -30,24 +30,26 @@ public class MeetingService {
         return meetingRepository.findByCrymAndUnitBizCode(crym, unit_biz_code);
     }
 
-//    @Transactional
-//    public void saveMeeting(MeetingDto meetingDto){
-//        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-//
-//       meetingRepository.save(MeetingDto.builder()
-//                .crym(meetingDto.getCrym())
-//                .unitBizCode(meetingDto.getUnitBizCode())
-//                .registerStatus(meetingDto.getRegisterStatus())
-//                .stdt(meetingDto.getStdt())
-//                .lunDinDiv(meetingDto.getLunDinDiv())
-//                .restaurantName(meetingDto.getRestaurantName())
-//                .joinMeetingYn(meetingDto.getJoinMeetingYn())
-//                .category(meetingDto.getCategory())
-//                .fst_crt_usid(meetingDto.getFst_crt_usid())
-//                .fst_crt_dtti(currentTimestamp)
-//                .lt_ch_usid(meetingDto.getLt_ch_usid())
-//                .lt_ch_dtti(currentTimestamp)
-//                .build()
-//        );
-//    }
+    @Transactional
+    public Meeting saveMeeting(MeetingDto meetingDto){
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+
+       Meeting m = meetingRepository.save(Meeting.builder()
+                .crym(meetingDto.getCrym())
+                .unitBizCode(meetingDto.getUnitBizCode())
+                .registerStatus(meetingDto.getRegisterStatus())
+                .stdt(meetingDto.getStdt())
+                .lunDinDiv(meetingDto.getLunDinDiv())
+                .restaurantName(meetingDto.getRestaurantName())
+                .joinMeetingYn(meetingDto.getJoinMeetingYn())
+                .category(meetingDto.getCategory())
+                .fst_crt_usid(meetingDto.getFst_crt_usid())
+                .fst_crt_dtti(currentTimestamp)
+                .lt_ch_usid(meetingDto.getLt_ch_usid())
+                .lt_ch_dtti(currentTimestamp)
+                .build()
+        );
+
+       return m;
+    }
 }
