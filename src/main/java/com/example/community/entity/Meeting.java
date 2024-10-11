@@ -1,10 +1,7 @@
 package com.example.community.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
 
@@ -13,9 +10,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Getter
 @Entity
+@Builder
 @SequenceGenerator(name = "meetings_seq_generator",
         sequenceName = "meetings_seq",
-        initialValue = 1)
+        initialValue = 5,
+        allocationSize = 1 // 시퀀스 값을 1씩 증가
+)
 @Table(name = "MEETING")
 public class Meeting {
 
