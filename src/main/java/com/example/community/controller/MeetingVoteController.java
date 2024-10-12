@@ -32,4 +32,24 @@ public class MeetingVoteController {
 
         return meetingVoteList;
     }
+
+    @PostMapping("/meetings/{meetingId}/votes")
+    @Operation(summary="캘린더5", description="간담회 투표하기")
+    public MeetingVote saveMeetingVote(@PathVariable("meetingId")int meetingId) {
+        MeetingVote m = null;
+
+        return m;
+    }
+
+    @DeleteMapping("/meetings/{meetingId}/votes")
+    @Operation(summary="캘린더5-1", description="간담회 투표 취소")
+    public void deleteMeetingVote(@PathVariable("meetingId") int meetingId) {
+        //단, 현재 접속자가 등록자 or 단위업무관리자 일 경우에만 삭제 가능 (추가 예정)
+        // 유저 id를 받아오는 방법?
+
+        // return redirect? 임시로 void 처리
+    }
+
+
+
 }

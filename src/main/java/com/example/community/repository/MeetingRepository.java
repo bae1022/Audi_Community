@@ -14,4 +14,6 @@ public interface MeetingRepository extends JpaRepository<Meeting, Long> {
 
     List<Meeting> findByCrymAndUnitBizCode(String crym, String unit_biz_code);
 
+    void deleteByMeetingId(int meetingId);
+
 }

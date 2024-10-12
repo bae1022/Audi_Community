@@ -9,4 +9,6 @@ import java.util.List;
 public interface MeetingVoteRepository extends JpaRepository<MeetingVote, Long> {
 
     List<MeetingVote> findByMeetingVoteId_MeetingId(int meetingId);
+
+    void deleteByMeetingVoteId_MeetingId(int meetingId);
 }
