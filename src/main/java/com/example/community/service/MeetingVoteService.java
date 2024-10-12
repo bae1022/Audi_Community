@@ -5,6 +5,7 @@ import com.example.community.entity.MeetingVote;
 import com.example.community.entity.MeetingVoteId;
 import com.example.community.repository.MeetingRepository;
 import com.example.community.repository.MeetingVoteRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class MeetingVoteService {
         return meetingVoteRepository.findByMeetingVoteId_MeetingId(meetingId);
     }
 
+    @Transactional
     public void saveMeetingVote(int meetingId, String eno, String ename) {
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
 
@@ -36,5 +38,18 @@ public class MeetingVoteService {
 
         // 저장
         meetingVoteRepository.save(meetingVote);
+    }
+
+    @Transactional
+    public void deleteMeetingVote(int meetingId, String eno) {
+        MeetingVoteId meetingVoteId = new MeetingVoteId();
+        meetingVoteId.setMeetingId(meetingId);
+        meetingVoteId.setEno(eno);
+
+        if (meetingVoteRepository.existsById(meetingVoteId)) {
+            meetingVoteRepository.deleteByMeetingVoteId(meetingVoteId);
+        } else {
+            throw new IllegalArgumentException("MeetingVote not found for the given meetingId and eno.");
+        }
     }
 }

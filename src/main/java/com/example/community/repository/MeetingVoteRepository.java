@@ -12,4 +12,6 @@ public interface MeetingVoteRepository extends JpaRepository<MeetingVote, Meetin
     List<MeetingVote> findByMeetingVoteId_MeetingId(int meetingId);
 
     void deleteByMeetingVoteId_MeetingId(int meetingId);
+
+    void deleteByMeetingVoteId(MeetingVoteId m);
 }

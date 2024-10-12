@@ -54,8 +54,8 @@ public class MeetingVoteController {
         //단, 현재 접속자가 등록자 or 단위업무관리자 일 경우에만 삭제 가능 (추가 예정)
         // 유저 id를 받아오는 방법?
         String eno = "LD10490";
-        String ename = "전승환";
 
+        meetingVoteService.deleteMeetingVote(meetingId, eno);
         return ResponseEntity.ok("Meeting vote deleted successfully");
     }
 
