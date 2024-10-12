@@ -8,6 +8,7 @@ import com.example.community.service.MeetingService;
 import com.example.community.service.MeetingVoteService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,19 +36,27 @@ public class MeetingVoteController {
 
     @PostMapping("/meetings/{meetingId}/votes")
     @Operation(summary="캘린더5", description="간담회 투표하기")
-    public MeetingVote saveMeetingVote(@PathVariable("meetingId")int meetingId) {
-        MeetingVote m = null;
+    public ResponseEntity<String> saveMeetingVote(@PathVariable("meetingId")int meetingId) {
+        // eno, ename 하드코딩 / 어떻게 받아올지 여부 정하고 수정
+        String eno = "LD10490";
+        String ename = "전승환";
 
-        return m;
+        // 이미 같은 MeetingId에 투표한 이력이 있는지 select 필요 (추가)
+
+        meetingVoteService.saveMeetingVote(meetingId, eno, ename);
+
+        return ResponseEntity.ok("Meeting vote saved successfully");
     }
 
     @DeleteMapping("/meetings/{meetingId}/votes")
     @Operation(summary="캘린더5-1", description="간담회 투표 취소")
-    public void deleteMeetingVote(@PathVariable("meetingId") int meetingId) {
+    public ResponseEntity<String>  deleteMeetingVote(@PathVariable("meetingId") int meetingId) {
         //단, 현재 접속자가 등록자 or 단위업무관리자 일 경우에만 삭제 가능 (추가 예정)
         // 유저 id를 받아오는 방법?
+        String eno = "LD10490";
+        String ename = "전승환";
 
-        // return redirect? 임시로 void 처리
+        return ResponseEntity.ok("Meeting vote deleted successfully");
     }
 
 
