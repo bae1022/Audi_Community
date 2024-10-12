@@ -49,7 +49,17 @@ public class MeetingService {
                 .lt_ch_dtti(currentTimestamp)
                 .build()
         );
-
        return m;
+    }
+
+    @Transactional
+    public void deleteMeeting(int meetingId) {
+        try{
+            Meeting m = findByMeetingId(meetingId);
+        } catch (Exception e){
+            // 미팅id 가 존재하지 않을 경우
+            e.printStackTrace(); //예외정보 출력
+        }
+        meetingRepository.deleteByMeetingId(meetingId);
     }
 }

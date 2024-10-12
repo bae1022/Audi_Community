@@ -54,10 +54,18 @@ public class MeetingController {
 
     @PostMapping("/meetings")
     @Operation(summary="캘린더4", description="간담회 후보 등록")
-    public Meeting save(@RequestBody MeetingDto meetingDto){
+    public Meeting saveMeeting(@RequestBody MeetingDto meetingDto){
         Meeting meeting = meetingService.saveMeeting(meetingDto);
 
         return meeting;
+    }
+
+    @DeleteMapping("/meetings/{meetingId}")
+    @Operation(summary="캘린더4-1", description="간담회 후보 삭제")
+    public void deleteMeeting(@PathVariable("meetingId")int meetingId){
+        // 현재 접속자가 등록자 or 단위업무관리자 일 경우에만 삭제 가능
+        // 유저 ID를 받아오는 방법?
+        meetingService.deleteMeeting(meetingId);
     }
 
 }
