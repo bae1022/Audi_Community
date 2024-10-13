@@ -10,6 +10,7 @@ import com.example.community.service.MeetingService;
 import com.example.community.service.RestaurantService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.Path;
@@ -66,6 +67,13 @@ public class MeetingController {
         // 현재 접속자가 등록자 or 단위업무관리자 일 경우에만 삭제 가능
         // 유저 ID를 받아오는 방법?
         meetingService.deleteMeeting(meetingId);
+    }
+
+    @PutMapping("/meetings/{meetingId}/confirm")
+    @Operation(summary="캘린더5-2", description="간담회 확정")
+    public ResponseEntity<String> confirmMeeting(@PathVariable("meetingId")int meetingId){
+
+        return ResponseEntity.ok("Meeting confirmed successfully");
     }
 
 }

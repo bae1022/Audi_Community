@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface MeetingRepository extends JpaRepository<Meeting, Long> {
+public interface MeetingRepository extends JpaRepository<Meeting, Integer> {
 
     List<Meeting> findByCrymAndRegisterStatus(String crym, String register_status);
 
@@ -15,5 +15,7 @@ public interface MeetingRepository extends JpaRepository<Meeting, Long> {
     List<Meeting> findByCrymAndUnitBizCode(String crym, String unit_biz_code);
 
     void deleteByMeetingId(int meetingId);
+
+    int updateRegisterStatus(int meetingId, String registerStatus);
 
 }
